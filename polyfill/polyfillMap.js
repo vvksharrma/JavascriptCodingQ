@@ -20,6 +20,7 @@ const sqrpoly=polyfillOfMap(arr,sqr)
 console.log("polyfill->",sqrpoly)
 
 // using prototype
+//If you want a method to be available to all object instances, you have to add it to the prototype property:
 Array.prototype.myMap=function(cb){
   const newArr = [];
   for (let i = 0; i < arr.length; i++) {
