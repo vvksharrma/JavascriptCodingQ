@@ -21,3 +21,13 @@ function countCharacters(str) {
 
 const result = countCharacters(str);
 console.log(result); // Output: { v: 2, i: 1, e: 1, k: 1 }
+
+
+//short answer
+let oo={}
+for(let i=0;i<str.length;i++){
+  oo[str[i]]?oo[str[i]]++:oo[str[i]]=1
+  // oo[str[i]]=(oo[str[i]]||0)+1;
+
+}
+console.log(oo)

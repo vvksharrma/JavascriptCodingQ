@@ -1,3 +1,23 @@
+// State:Redux manages the entire state of your application in a single immutable state tree (object).
+//Actions are plain JavaScript objects that represent payloads of information that send data from your application to your Redux store.
+//Reducer is a pure Fn Reducers specify how the application's state changes in response to actions sent to the store.
+// Reducers should not mutate the previous state; instead, they should return a new state object.
+//Flow
+// You dispatch an action to the Redux store.
+// The Redux store calls the corresponding reducer function.
+// The reducer calculates the new state based on the current state and the action.
+// The Redux store updates the state with the new state returned by the reducer.
+// React components connected to the store via connect or useSelector receive the updated state and re-render as necessary.
+
+// Thunks allow you to handle asynchronous operations in Redux actions, such as fetching data, making API calls, or performing async computations.
+// Thunks are functions that return functions. They are used to delay the execution of an action creator
+const store = createStore(
+    rootReducer,
+    applyMiddleware(thunk)
+  );
+  
+
+//createSlice() to define reducers and action creators together
 // counterSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
