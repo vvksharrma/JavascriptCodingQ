@@ -1,3 +1,6 @@
+//using set
+const uniqueArray = array => [...new Set(array)];
+
 //Remove duplicate item from array 
 const arr = [1,2,3,4,1,2];
 const b=[];
@@ -10,8 +13,8 @@ console.log("removed array value",b)
 
 
 //second method using filter
-const arr = [1,2,3,4,1,2];
-const b=[];
+const arr1 = [1,2,3,4,1,2];
+const barr=[];
 arr.filter((dup)=>{
 if(b.indexOf(arr[dup]) == -1){
 b.push(arr[dup])
