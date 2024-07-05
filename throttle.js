@@ -1,4 +1,6 @@
 //throttle limits the execution of the function
+// Throttle limits the maximum number of times a function can be called over a specified time interval. 
+// It's handy for tasks like scrolling or resizing events, where you want to reduce the frequency of function calls to improve performance.
 //basic approach
 const throttle=(fn,limit)=>{
     let flag=true

@@ -1,3 +1,4 @@
+// Debounce delays invoking a function until after a specified time has elapsed since the last invocation. It's useful for scenarios like search input fields, where you want to wait for the user to finish typing before making an API call.
 //Debouncing an input value
 
 const debounce=(fn,delay)=>{

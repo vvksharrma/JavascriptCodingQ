@@ -1,6 +1,5 @@
 // for managing complex state logic in functional components. It is an alternative to useState for managing state that involves multiple sub-values or when the next state depends on the previous one. Here's how you can use useReducer in a React component:
 
-// useReducer is a React hook that is used for managing complex state logic in functional components. It is an alternative to useState for managing state that involves multiple sub-values or when the next state depends on the previous one. Here's how you can use useReducer in a React component:
 import React, { useReducer } from 'react';
 
 const initialState = { count: 0 };

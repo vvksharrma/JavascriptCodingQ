@@ -25,7 +25,7 @@ const responses = await Promise.all(
         ); // Send request for each id
     })
 );
-},[])
+
 
 // One thing to note is that Promise.all() will reject entirely even if one of the API calls fails. To avoid this, you can use the Promise.allSettled() method, which resolves even when all promises are rejected. It includes the status(resolved or rejected) of promises in the result.
 
