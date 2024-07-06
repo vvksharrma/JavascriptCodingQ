@@ -20,25 +20,33 @@ const school = {
     }
   };
 
-  function flattenObj(obj){
-    let newObj={};
-    for(let key in obj){
-        if(typeof obj[key]=='object'){
-            let flatObj=flattenObj(obj[key]);
-            for(let key2 in flatObj){
-                newObj[key+'_'+key2]=flatObj[key2];
+  function flattenObj(obj) {
+    // Initialize a new empty object to hold the flattened key-value pairs
+    let newObj = {};
+    
+    // Iterate over each key in the input object
+    for (let key in obj) {
+        // Check if the value corresponding to the current key is an object
+        if (typeof obj[key] == 'object') {
+            // Recursively call flattenObj on the nested object to flatten it
+            let flatObj = flattenObj(obj[key]);
+            
+            // Iterate over each key in the flattened nested object
+            for (let key2 in flatObj) {
+                // Construct a new key by combining the current key and the key from the flattened object, separated by an underscore
+                newObj[key + '_' + key2] = flatObj[key2];
             }
-        }
-        else{
-            newObj[key]=obj[key];
+        } else {
+            // If the value is not an object, simply add it to the new object
+            newObj[key] = obj[key];
         }
     }
-    return newObj
-  }
-  console.log(flattenObj(school));
+    
+    // Return the newly constructed flattened object
+    return newObj;
+}
 
-
-  
+console.log(flattenObj(school));
   //output
 //   {
 //     name: 'Oakridge High School',
