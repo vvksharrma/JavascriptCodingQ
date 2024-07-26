@@ -1,3 +1,12 @@
+//ways to create Object
+const obj1={};
+const obj2=new Object();
+const obj3=Object.assign({},{});
+const obj4=Object.create({});
+function test() {};
+const obj5=new test();
+Object.setPrototypeOf(obj5,Object.prototype)
+
 const randomValues = [
   { a: "Alexander", value: [1, 2] },
   { b: "Brian", value: [3] },

@@ -1,0 +1,39 @@
+name: CI/CD Pipeline
+# This is the name of the workflow
+
+on:   # Specifies the events that trigger the workflow
+  push:   #This trigger runs the workflow whenever there is a push to the main branch.
+    branches:
+      - main
+  pull_request:   #This trigger runs the workflow whenever a pull request is created or updated for the main branch.
+    branches:
+      - main
+
+jobs:   # Defines the set of tasks to be executed. Each job runs in a separate virtual environment.
+  build:    # name of the job
+    runs-on: ubuntu-latest    #the environment in which the job will run
+
+    steps:    #Contains a series of steps that are executed sequentially within the job.
+    - name: Checkout code
+      uses: actions/checkout@v3   # Uses the actions/checkout action to check out the repository's code into the runner’s workspace.
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3   # Uses the actions/setup-node action to install Node.js.
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+    - name: Build
+      run: npm run build
+
+    - name: Deploy
+      if: github.ref == 'refs/heads/main'   # to check if the branch is main
+      run: |                                # run: |: Starts a multi-line script block.
+        # Example deployment script
+        echo "Deploying to production server..."
+        # Your deployment commands here
