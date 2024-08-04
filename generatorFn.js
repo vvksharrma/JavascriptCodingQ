@@ -10,4 +10,3 @@ function* generator(i) {
   
   console.log(gen.next().value);
   // Expected output: 20
-  
