@@ -3,12 +3,18 @@ Optimizing a React application is crucial for improving performance, especially 
 ### 1. **Memoization with `React.memo`**
 - **What it does**: Prevents unnecessary re-rendering of functional components by memoizing the result.
 - **Usage**:
+In this example, the UserCard component will only re-render if the user prop changes.
   ```jsx
-  import React, { memo } from 'react';
+import React, { memo } from 'react';
 
-  const MyComponent = memo(({ prop }) => {
-    // Component code
-  });
+const UserCard = memo(({ user }) => {
+  return (
+    <div>
+      <h2>{user.name}</h2>
+      <p>{user.email}</p>
+    </div>
+  );
+});
   ```
 
 ### 2. **Using `useMemo` and `useCallback` Hooks**
@@ -26,35 +32,79 @@ Optimizing a React application is crucial for improving performance, especially 
     );
   };
   ```
+practical example:
+Let's say we have a SearchBar component that performs an expensive calculation to filter search results. We can use useMemo to memoize the filtered results:
+```jsx
+import React, { useMemo, useState } from 'react';
+
+const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [data, setData] = useState([...]); // assume we have some data
+
+  const filteredResults = useMemo(() => {
+    return data.filter(item => item.name.includes(searchTerm));
+  }, [searchTerm, data]);
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+      />
+      <ul>
+        {filteredResults.map(item => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+```
+
 
 ### 3. **Code Splitting**
 - **What it does**: Splits code into smaller bundles to load only the necessary parts of the application initially.
 - **Usage**:
+Let's say we have a Dashboard component that renders a Chart component. We can use code splitting to load the Chart component only when it's needed:
   ```jsx
-  import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 
-  const LazyComponent = lazy(() => import('./LazyComponent'));
+const Chart = lazy(() => import('./Chart'));
 
-  const MyComponent = () => (
-    <Suspense fallback={<div>Loading...</div>}>
-      <LazyComponent />
-    </Suspense>
+const Dashboard = () => {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Chart />
+      </Suspense>
+    </div>
   );
+};
   ```
 
 ### 4. **Using React.lazy and Suspense for Lazy Loading**
 - **What it does**: Dynamically imports components only when they are needed.
-- **Usage**:
+- **Usage**:Let's say we have a ImageGallery component that renders a list of images. We can use lazy loading to load each image only when it's needed:
   ```jsx
   import React, { Suspense, lazy } from 'react';
 
-  const LazyComponent = lazy(() => import('./LazyComponent'));
+  const Image = lazy(() => import('./Image'));
 
-  const MyComponent = () => (
-    <Suspense fallback={<div>Loading...</div>}>
-      <LazyComponent />
-    </Suspense>
+  const ImageGallery = () => {
+  const images = [...]; // assume we have some images
+
+  return (
+    <div>
+      {images.map((image, index) => (
+        <Suspense key={index} fallback={<div>Loading...</div>}>
+          <Image src={image.src} />
+        </Suspense>
+      ))}
+    </div>
   );
+  };
   ```
 
 ### 5. **Avoiding Inline Functions in JSX**
@@ -85,7 +135,7 @@ Optimizing a React application is crucial for improving performance, especially 
 
 ### 7. **Using Immutable Data Structures**
 - **What it does**: Helps React to efficiently determine when a component needs re-rendering.
-- **Usage**:
+- **Usage**:Let's say we have a UserProfile component that renders a user's profile information only if the user is logged in. We can optimize the conditional rendering by using a ternary operator:
   ```jsx
   import { List, Map } from 'immutable';
 
