@@ -31,10 +31,34 @@ obj = {
     return value;
   }
   
+  
   console.log(getValue('a.b')) // 1
   console.log(getValue('a.b.d')) //undefined
   console.log(getValue('d')) //3
   console.log(getValue('a.b.c.f')) //undefined
+  
+  // using reduce method
+  function readKey(obj, path) {
+    const pathArr=path.split('.');
+    
+    return pathArr.reduce((current,key)=>{
+        return (current !== undefined && current !== null) ? current[key] : undefined;
+    },obj)
+}
+
+const obj = {
+    a: 1,
+    b: {
+        c: {
+            d: 100
+        }
+    },
+    e: null
+};
+console.log(readKey(obj, 'a')); // 1
+console.log(readKey(obj, 'b.c.d')); // 100
+console.log(readKey(obj, 'b.e')); // undefined
+console.log(readKey(obj, 'e')); // null
   
   
   
