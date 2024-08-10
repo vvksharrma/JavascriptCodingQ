@@ -1,0 +1,1 @@
+0, null, undefined, NaN, ""  -> falsy values
