@@ -67,4 +67,5 @@ describe('add function', () => {
   test('should return the correct sum when adding zero', () => {
     expect(add(0, 0)).toBe(0);
     expect(add(5, 0)).toBe(5);
-    expect(add(
+  })
+});

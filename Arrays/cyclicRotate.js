@@ -17,12 +17,13 @@ function rotateArray(arr, n) {
   const remainingPart = arr.slice(0, -n);
   return rotatedPart.concat(remainingPart);
 }
-
 // Example usage
 const array = [1, 2, 3, 4, 5];
 const n = 2;
 const rotatedArray = rotateArray(array, n);
 console.log(rotatedArray); // Output: [4, 5, 1, 2, 3]
+
+//----------------------------//
 
 // with no inbuilt methods
 function rotate(arr){
