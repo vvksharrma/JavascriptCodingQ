@@ -3,7 +3,7 @@ TypeScript Data Types
 
 TypeScript is a superset of JavaScript that adds static typing to the language. This can help catch errors early and improve code readability. Here's a rundown of the primary data types available in TypeScript:
 
-Tip:to make optional value put "?" after the type
+Tip:to make optional value put "?:" after the type
 ### 1. Primitive Types
 
 These are the basic data types that are immutable.

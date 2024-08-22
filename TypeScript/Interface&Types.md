@@ -71,3 +71,14 @@ const dog: Dog = {
   breed: 'Golden Retriever'
 };
 In the above example, we define an interface Animal with a property name. We then define an interface Dog that extends Animal and adds a property breed. We then create an object dog with the type Dog.
+
+####Key Differences
+Extending and Implementing
+Types: Types can use intersections (&) to combine multiple types.
+Interfaces: Interfaces can extend other interfaces using the extends keyword, which is more suited for inheritance.
+Declaration Merging
+Types: Cannot be merged or extended once defined.
+Interfaces: Can have multiple declarations with the same name, and TypeScript will automatically merge them. This is useful for extending existing interfaces.
+When to Use Each
+Use type when you need to define complex types involving unions, intersections, or tuples, or when you need to alias primitive types.
+Use interface when you are defining the shape of objects or classes, especially if y
