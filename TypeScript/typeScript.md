@@ -19,7 +19,15 @@ Future proofing
 2.Data Types
 3.Types and Interface
 4.Union and Intersection
-5.Aliases
+### 5.Aliases
+    way to give a new name to an existing type. 
+    ```interface MyObject {
+    name: string;
+    age: number;
+    }
+
+    type MyObjectType = MyObject;
+    ```
 6.Classes and Generics
 7.Functions
 8.Literal Types
